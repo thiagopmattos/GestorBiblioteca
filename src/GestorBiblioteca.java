@@ -25,19 +25,32 @@ public class GestorBiblioteca extends OperacaoBiblioteca {
     }
 
     public void salvarItensEmArquivo(String caminhoArquivo) throws IOException {
+        File arquivo = new File(caminhoArquivo);
+        arquivo.getParentFile().mkdirs();  // Cria a pasta se não existir
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo))) {
             for (ItemBiblioteca item : itens) {
-                writer.write(item.toString());
+                writer.write(item.getTitulo() + "," + item.getCodigo() + "," + (item instanceof Livro ? ((Livro) item).getAutor() : ""));
                 writer.newLine();
             }
         }
     }
 
     public void carregarItensDeArquivo(String caminhoArquivo) throws IOException {
+        File arquivo = new File(caminhoArquivo);
+        if (!arquivo.exists()) {
+            System.out.println("Arquivo não encontrado. Criando um novo arquivo.");
+            return;
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
-                System.out.println("Carregado do arquivo: " + linha);
+                String[] dados = linha.split(",");
+                if (dados.length == 3) {
+                    Livro livro = new Livro(dados[0], Integer.parseInt(dados[1]), dados[2]);
+                    itens.add(livro);
+                }
             }
         }
     }
