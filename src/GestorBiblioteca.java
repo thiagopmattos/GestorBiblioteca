@@ -26,7 +26,7 @@ public class GestorBiblioteca extends OperacaoBiblioteca {
 
     public void salvarItensEmArquivo(String caminhoArquivo) throws IOException {
         File arquivo = new File(caminhoArquivo);
-        arquivo.getParentFile().mkdirs();  // Cria a pasta se não existir
+        arquivo.getParentFile().mkdirs();
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo))) {
             for (ItemBiblioteca item : itens) {

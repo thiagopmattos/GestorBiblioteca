@@ -17,7 +17,7 @@ public class SistemaPrincipal {
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine();  // Limpa o buffer
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -62,7 +62,7 @@ public class SistemaPrincipal {
         String titulo = scanner.nextLine();
         System.out.print("Digite o código do livro: ");
         int codigo = scanner.nextInt();
-        scanner.nextLine();  // Limpa o buffer
+        scanner.nextLine();
         System.out.print("Digite o autor do livro: ");
         String autor = scanner.nextLine();
 
@@ -81,7 +81,7 @@ public class SistemaPrincipal {
     private static void deletarLivro() {
         System.out.print("Digite o código do livro para deletar: ");
         int codigo = scanner.nextInt();
-        scanner.nextLine();  // Limpa o buffer
+        scanner.nextLine();
 
         List<ItemBiblioteca> livros = gestor.listarItens();
         ItemBiblioteca livroParaDeletar = null;
