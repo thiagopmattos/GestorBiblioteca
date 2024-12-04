@@ -18,5 +18,12 @@ public class Livro extends ItemBiblioteca {
                 ", autor='" + autor + '\'' +
                 '}');
     }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "autor='" + autor + '\'' +
+                '}';
+    }
 }
 

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class GestorBiblioteca extends OperacaoBiblioteca {
+public class GestorBiblioteca extends OperacaoBiblioteca implements SalvarItensEmArquivo,CarregarItensDeArquivo{
     private List<ItemBiblioteca> itens = new ArrayList<>();
     private Set<String> historicoEmprestimos = new HashSet<>();
 
@@ -16,13 +16,7 @@ public class GestorBiblioteca extends OperacaoBiblioteca {
         return itens;
     }
 
-    public void emprestarItem(ItemBiblioteca item) throws ItemNaoDisponivelException {
-        if (!itens.contains(item)) {
-            throw new ItemNaoDisponivelException("Item não disponível.");
-        }
-        historicoEmprestimos.add(item.getTitulo());
-        System.out.println("Item emprestado: " + item.getTitulo());
-    }
+
 
     public void salvarItensEmArquivo(String caminhoArquivo) throws IOException {
         File arquivo = new File(caminhoArquivo);
